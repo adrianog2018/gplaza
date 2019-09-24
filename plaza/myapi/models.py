@@ -16,23 +16,23 @@ class UserProfile(models.Model):
 
 
 class Recipe(models.Model):
-    name = models.CharField(max_length=50, null=False)
+    name = models.CharField(max_length=50, null=False, default='')
 
     def __str__(self):
         return self.name
 
 
 class Step(models.Model):
-    step_text = models.CharField(max_length=200, null=False)
-    #recipe = models.ForeignKey(to=Recipe, on_delete=models.CASCADE)
+    step_text = models.CharField(max_length=200, null=False, default='')
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.step_text
 
 
 class Ingredient(models.Model):
-    text = models.CharField(null=False, max_length=50)
-    #recipe = models.ForeignKey(to=Recipe, on_delete=models.CASCADE)
+    text = models.CharField(null=False, max_length=50, default='')
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.text

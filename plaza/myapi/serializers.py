@@ -5,17 +5,17 @@ from .models import Step, Ingredient, Recipe
 class StepSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Step
-        fields = ('id','url', 'step_text')
+        fields = ('id','url', 'step_text','recipe')
 
 class IngredientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Ingredient
-        fields = ('url', 'text')
+        fields = ('id','url', 'text','recipe')
 
 class RecipeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Recipe
-        fields = ('url', 'name')
+        fields = ('id','url', 'name')
 """
 class CustomUserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
