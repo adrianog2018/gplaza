@@ -1,7 +1,12 @@
 from rest_framework import serializers
-from .models import Step, Ingredient, Recipe
+from . models import Step, Ingredient, Recipe, Usermodel
 
-
+class UsermodelSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Usermodel
+        fields = ('id','url','user','first_name','last_name','email')
+      
+     
 class StepSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Step
@@ -16,8 +21,4 @@ class RecipeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Recipe
         fields = ('id','url', 'name')
-"""
-class CustomUserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id','url', 'username', 'first_name','last_name')"""
+
